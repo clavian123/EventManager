@@ -18,7 +18,7 @@ public class Reward {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	@Column(name = "reward_code")
 	private String reward_code;
 	@Column(name = "type")
@@ -35,7 +35,7 @@ public class Reward {
 
 	}
 	
-	public Reward(int id, String reward_code, String type, int status, int voucher_code) {
+	public Reward(Long id, String reward_code, String type, int status, int voucher_code) {
 		this.id = id;
 		this.reward_code = reward_code;
 		this.type = type;
@@ -43,11 +43,11 @@ public class Reward {
 		this.voucher_code = voucher_code;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

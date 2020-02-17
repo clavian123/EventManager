@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.app.eventmanager.model.Event;
 
-public interface EventRepository extends JpaRepository<Event, Integer>{
+public interface EventRepository extends JpaRepository<Event, Long>{
 	@Query("select o from Event o where o.code like 'registration%'")
 	List<Event> findByCode();
 	

@@ -23,7 +23,7 @@ public class Event {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	@Column(name = "code")
 	private String code;
 	@Column(name = "name")
@@ -43,7 +43,7 @@ public class Event {
 
 	}
 	
-	public Event(int id, String code, String description, Date event_start, Date event_end) {
+	public Event(Long id, String code, String description, Date event_start, Date event_end) {
 		this.id = id;
 		this.code = code;
 		this.description = description;
@@ -51,11 +51,11 @@ public class Event {
 		this.event_end = event_end;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
