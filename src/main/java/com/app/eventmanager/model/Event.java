@@ -22,8 +22,8 @@ public class Event {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "id_event")
+	private Long idEvent;
 	@Column(name = "code")
 	private String code;
 	@Column(name = "name")
@@ -31,9 +31,9 @@ public class Event {
 	@Column(name = "description")
 	private String description;
 	@Column(name = "event_start")
-	private Date event_start;
+	private Date eventStart;
 	@Column(name = "event_end")
-	private Date event_end;
+	private Date eventEnd;
 	
 	@ManyToMany (cascade = CascadeType.PERSIST)
 	@JoinTable(name = "event_reward", joinColumns = { @JoinColumn(name = "id_reward", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_event", nullable = false) })
@@ -43,20 +43,20 @@ public class Event {
 
 	}
 	
-	public Event(Long id, String code, String description, Date event_start, Date event_end) {
-		this.id = id;
+	public Event(Long idEvent, String code, String description, Date eventStart, Date eventEnd) {
+		this.idEvent = idEvent;
 		this.code = code;
 		this.description = description;
-		this.event_start = event_start;
-		this.event_end = event_end;
+		this.eventStart = eventStart;
+		this.eventEnd = eventEnd;
 	}
 
 	public Long getId() {
-		return id;
+		return idEvent;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idEvent = id;
 	}
 
 	public String getCode() {
@@ -84,19 +84,19 @@ public class Event {
 	}
 
 	public Date getEvent_start() {
-		return event_start;
+		return eventStart;
 	}
 
-	public void setEvent_start(Date event_start) {
-		this.event_start = event_start;
+	public void setEvent_start(Date eventStart) {
+		this.eventStart = eventStart;
 	}
 
 	public Date getEvent_end() {
-		return event_end;
+		return eventEnd;
 	}
 
-	public void setEvent_end(Date event_end) {
-		this.event_end = event_end;
+	public void setEvent_end(Date eventEnd) {
+		this.eventEnd = eventEnd;
 	}
 	
 	

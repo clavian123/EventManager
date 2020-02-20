@@ -17,16 +17,16 @@ public class Reward {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "id_reward")
+	private Long idReward;
 	@Column(name = "reward_code")
-	private String reward_code;
+	private String rewardCode;
 	@Column(name = "type")
 	private String type;
 	@Column(name = "status")
 	private Integer status;
 	@Column(name = "voucher_code")
-	private Integer voucher_code;
+	private Integer voucherCode;
 	
 	@ManyToMany(mappedBy = "reward") 
     private Set<Event> event = new HashSet<>();
@@ -35,28 +35,28 @@ public class Reward {
 
 	}
 	
-	public Reward(Long id, String reward_code, String type, int status, int voucher_code) {
-		this.id = id;
-		this.reward_code = reward_code;
+	public Reward(Long idReward, String rewardCode, String type, int status, int voucherCode) {
+		this.idReward = idReward;
+		this.rewardCode = rewardCode;
 		this.type = type;
 		this.status = status;
-		this.voucher_code = voucher_code;
+		this.voucherCode = voucherCode;
 	}
 
 	public Long getId() {
-		return id;
+		return idReward;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idReward = id;
 	}
 
 	public String getReward_code() {
-		return reward_code;
+		return rewardCode;
 	}
 
-	public void setReward_code(String reward_code) {
-		this.reward_code = reward_code;
+	public void setReward_code(String rewardCode) {
+		this.rewardCode = rewardCode;
 	}
 
 	public String getType() {
@@ -76,11 +76,11 @@ public class Reward {
 	}
 
 	public Integer getVoucher_code() {
-		return voucher_code;
+		return voucherCode;
 	}
 
-	public void setVoucher_code(Integer voucher_code) {
-		this.voucher_code = voucher_code;
+	public void setVoucher_code(Integer voucherCode) {
+		this.voucherCode = voucherCode;
 	}
 	
 	
