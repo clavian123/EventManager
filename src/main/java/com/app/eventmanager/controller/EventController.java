@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.eventmanager.model.Event;
 import com.app.eventmanager.repository.EventRepository;
-import com.app.eventmanager.service.EventService;
 
 
 @RestController
@@ -22,9 +21,6 @@ import com.app.eventmanager.service.EventService;
 public class EventController {
 	@Autowired
 	EventRepository eventRepository;
-	
-	@Autowired
-	EventService eventService;
 	
 	@GetMapping(value = "all")
 	public ResponseEntity<List<Event>> getAllEvent(@RequestParam(required = false) String title) {
