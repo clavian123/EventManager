@@ -23,8 +23,8 @@ public class Reward {
 	private String rewardCode;
 	@Column(name = "type")
 	private String type;
-	@Column(name = "status")
-	private Integer status;
+	@Column(name = "id_status")
+	private Integer idStatus;
 	@Column(name = "voucher_code")
 	private Integer voucherCode;
 	
@@ -35,11 +35,11 @@ public class Reward {
 
 	}
 	
-	public Reward(Long idReward, String rewardCode, String type, int status, int voucherCode) {
+	public Reward(Long idReward, String rewardCode, String type, int idStatus, int voucherCode) {
 		this.idReward = idReward;
 		this.rewardCode = rewardCode;
 		this.type = type;
-		this.status = status;
+		this.idStatus = idStatus;
 		this.voucherCode = voucherCode;
 	}
 
@@ -68,11 +68,11 @@ public class Reward {
 	}
 
 	public Integer getStatus() {
-		return status;
+		return idStatus;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setStatus(Integer idStatus) {
+		this.idStatus = idStatus;
 	}
 
 	public Integer getVoucher_code() {

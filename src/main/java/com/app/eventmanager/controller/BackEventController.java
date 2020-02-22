@@ -23,7 +23,7 @@ public class BackEventController {
 		com.app.eventmanager.model.BackResponse backResponse = new com.app.eventmanager.model.BackResponse();
 		backResponse.setValidation(inputBackPayload.getValidation());
 		backResponse.setSetOfReward(inputBackPayload.getSetOfReward());
-		backResponse.setExtra("Hai");
+		backResponse.setExtra("Message");
 		return backResponse;
 	}
 

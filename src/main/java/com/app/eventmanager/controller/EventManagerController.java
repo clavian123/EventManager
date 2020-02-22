@@ -2,6 +2,7 @@ package com.app.eventmanager.controller;
 
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,11 @@ import com.app.eventmanager.repository.EventRepository;
 import com.app.eventmanager.repository.RewardRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 @RestController
 public class EventManagerController {
+	private static Logger log = Logger.getLogger(EventManagerController.class);
+	
 	@Autowired
 	EventRepository eventRepository;
 	@Autowired
@@ -46,7 +48,6 @@ public class EventManagerController {
 		final String uri = "http://localhost:8080/backsend";
 		
 		ObjectMapper mapper = new ObjectMapper();
-	    mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		
 		PostResponse response = new PostResponse();
 		response.setTransactionTypeCode(inputPayload.getTransactionTypeCode());
@@ -56,7 +57,7 @@ public class EventManagerController {
 		if(inputPayload.getTransactionTypeCode().equals("registration")) {
 			
 			for(Event e : event) {
-				System.out.println(e.getId()+e.getCode()+e.getDescription()+e.getName());
+				log.debug(e.getId()+e.getCode()+e.getDescription()+e.getName());
 				text = e.getCode() + " " + e.getEvent_end() + " " + e.getEvent_start();
 			}
 			if(event != null) {
@@ -64,7 +65,7 @@ public class EventManagerController {
 				backSampleResponse.setValidation("isValid");
 				backSampleResponse.setSetOfReward(json);
 				BackSampleResponse addRest = restTemplate.postForObject( uri, backSampleResponse, BackSampleResponse.class);
-				System.out.println(addRest.getValidation());
+				log.debug(addRest.getValidation());
 			}
 		}
 		
