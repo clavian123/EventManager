@@ -1,23 +1,23 @@
 package com.app.eventmanager.model;
 
-public class BackSampleResponse {
-	private String Validation;
-	private String SetOfReward;
+public class SendRequest {
+	String Validation;
+	String SetOfReward;
 	
 	public String getValidation() {
 		return Validation;
 	}
 	public void setValidation(String validation) {
-		this.Validation = validation;
+		Validation = validation;
 	}
 	public String getSetOfReward() {
 		return SetOfReward;
 	}
 	public void setSetOfReward(String setOfReward) {
-		this.SetOfReward = setOfReward;
+		SetOfReward = setOfReward;
 	}
 	
+
 	
-	
-	
+
 }

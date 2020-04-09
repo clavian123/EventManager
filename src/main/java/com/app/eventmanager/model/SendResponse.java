@@ -1,8 +1,9 @@
 package com.app.eventmanager.model;
 
-public class BackRequest {
+public class SendResponse {
 	String Validation;
 	String SetOfReward;
+	String extra;
 	
 	public String getValidation() {
 		return Validation;
@@ -16,8 +17,15 @@ public class BackRequest {
 	public void setSetOfReward(String setOfReward) {
 		SetOfReward = setOfReward;
 	}
+	public String getExtra() {
+		return extra;
+	}
+	public void setExtra(String extra) {
+		this.extra = extra;
+	}
 	
 
+	
 	
 
 }

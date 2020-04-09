@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.app.eventmanager.model.BackSampleResponse;
+import com.app.eventmanager.model.SendSampleResponse;
 import com.app.eventmanager.model.Event;
-import com.app.eventmanager.model.PostRequest;
-import com.app.eventmanager.model.PostResponse;
+import com.app.eventmanager.model.ReceivePostRequest;
+import com.app.eventmanager.model.ReceivePostResponse;
 import com.app.eventmanager.model.Reward;
-import com.app.eventmanager.model.SampleResponse;
+import com.app.eventmanager.model.ReceiveSampleResponse;
 import com.app.eventmanager.repository.EventRepository;
 import com.app.eventmanager.repository.RewardRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-public class EventManagerController {
-	private static Logger log = Logger.getLogger(EventManagerController.class);
+public class ReceiveFromRegister {
+	private static Logger log = Logger.getLogger(ReceiveFromRegister.class);
 	
 	@Autowired
 	EventRepository eventRepository;
@@ -34,22 +34,22 @@ public class EventManagerController {
 	String text = null;
 	
 	@RequestMapping("/sample")
-	public SampleResponse Sample(@RequestParam(value = "TransactionTypeCode",
+	public ReceiveSampleResponse Sample(@RequestParam(value = "TransactionTypeCode",
 	defaultValue = "TransactionTypeCode") String TransactionTypeCode) {
-		SampleResponse response = new SampleResponse();
+		ReceiveSampleResponse response = new ReceiveSampleResponse();
 		response.setTransactionTypeCode(TransactionTypeCode);
 		return response;
 
 	}
 	
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
-	public PostResponse Test(@RequestBody PostRequest inputPayload) throws JsonProcessingException {
+	public ReceivePostResponse Test(@RequestBody ReceivePostRequest inputPayload) throws JsonProcessingException {
 		RestTemplate restTemplate = new RestTemplate();
 		final String uri = "http://localhost:8080/backsend";
 		
 		ObjectMapper mapper = new ObjectMapper();
 		
-		PostResponse response = new PostResponse();
+		ReceivePostResponse response = new ReceivePostResponse();
 		response.setTransactionTypeCode(inputPayload.getTransactionTypeCode());
 		Set<Event> event = this.eventRepository.findByCode();
 		Set<Reward> reward = this.rewardRepository.findByAll();
@@ -61,10 +61,10 @@ public class EventManagerController {
 				text = e.getCode() + " " + e.getEvent_end() + " " + e.getEvent_start();
 			}
 			if(event != null) {
-				BackSampleResponse backSampleResponse = new BackSampleResponse();
+				SendSampleResponse backSampleResponse = new SendSampleResponse();
 				backSampleResponse.setValidation("isValid");
 				backSampleResponse.setSetOfReward(json);
-				BackSampleResponse addRest = restTemplate.postForObject( uri, backSampleResponse, BackSampleResponse.class);
+				SendSampleResponse addRest = restTemplate.postForObject( uri, backSampleResponse, SendSampleResponse.class);
 				log.debug(addRest.getValidation());
 			}
 		}
