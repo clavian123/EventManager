@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BackEventController {
+public class SendToRegister {
 	@RequestMapping("/backsample")
-	public com.app.eventmanager.model.BackResponse BackSample(@RequestParam(value = "Validation",
+	public com.app.eventmanager.model.SendResponse BackSample(@RequestParam(value = "Validation",
 	defaultValue = "Validation") String Validation, String SetOfReward) {
-		com.app.eventmanager.model.BackResponse backResponse = new com.app.eventmanager.model.BackResponse();
+		com.app.eventmanager.model.SendResponse backResponse = new com.app.eventmanager.model.SendResponse();
 		backResponse.setValidation(Validation);
 		backResponse.setSetOfReward(SetOfReward);
 		return backResponse;
@@ -19,8 +19,8 @@ public class BackEventController {
 	}
 	
 	@RequestMapping(value = "/backsend", method = RequestMethod.POST)
-	public com.app.eventmanager.model.BackResponse Test(@RequestBody com.app.eventmanager.model.BackRequest inputBackPayload) {
-		com.app.eventmanager.model.BackResponse backResponse = new com.app.eventmanager.model.BackResponse();
+	public com.app.eventmanager.model.SendResponse Test(@RequestBody com.app.eventmanager.model.SendRequest inputBackPayload) {
+		com.app.eventmanager.model.SendResponse backResponse = new com.app.eventmanager.model.SendResponse();
 		backResponse.setValidation(inputBackPayload.getValidation());
 		backResponse.setSetOfReward(inputBackPayload.getSetOfReward());
 		backResponse.setExtra("Message");

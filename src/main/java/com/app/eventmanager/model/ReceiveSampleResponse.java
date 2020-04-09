@@ -1,6 +1,6 @@
 package com.app.eventmanager.model;
 
-public class SampleResponse {
+public class ReceiveSampleResponse {
 	private String TransactionTypeCode;
 
 	public String getTransactionTypeCode() {
