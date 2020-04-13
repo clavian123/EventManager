@@ -11,7 +11,9 @@ public class EventmanagerApplication implements CommandLineRunner{
 
 	public static void main(String[] args) throws Exception{
 		SpringApplication.run(EventmanagerApplication.class, args);
-		System.out.println("Halo");
+		System.out.println("halo2");
+		System.out.println("halo2");
+
 
 	}
 

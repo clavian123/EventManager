@@ -19,6 +19,8 @@ import com.app.eventmanager.repository.EventRepository;
 @RestController
 @RequestMapping(value = "/event")
 public class EventController {
+	
+
 	@Autowired
 	EventRepository eventRepository;
 	
